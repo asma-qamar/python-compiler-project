@@ -1,0 +1,96 @@
+
+==============================================================================
+                        BEAUTIFUL PYTHON MINI COMPILER                        
+==============================================================================
+Source File: best_python_test.py
+Language   : Python subset
+Features   : Lexer, Parser, Parse Tree, Semantic Analysis, Symbol Table, TAC, Optimization, Error Handling
+
+==============================================================================
+                             1. LEXICAL ANALYSIS                              
+==============================================================================
++-------+--------------------+-----------------+--------------------+--------+-------+
+| No.   | Lexeme             | Token           | Type               | Line   | Col   |
++-------+--------------------+-----------------+--------------------+--------+-------+
+| 1     | a                  | IDENTIFIER      | Identifier         | 1      | 1     |
+| 2     | =                  | OPERATOR        | Operator           | 1      | 3     |
+| 3     | 5                  | NUMBER          | Constant           | 1      | 5     |
+| 4     | \n                 | NEWLINE         | Line Break         | 1      | 6     |
+| 5     | b                  | IDENTIFIER      | Identifier         | 2      | 1     |
+| 6     | =                  | OPERATOR        | Operator           | 2      | 3     |
+| 7     | 10                 | NUMBER          | Constant           | 2      | 5     |
+| 8     | \n                 | NEWLINE         | Line Break         | 2      | 7     |
+| 9     | c                  | IDENTIFIER      | Identifier         | 3      | 1     |
+| 10    | =                  | OPERATOR        | Operator           | 3      | 3     |
+| 11    | a                  | IDENTIFIER      | Identifier         | 3      | 5     |
+| 12    | +                  | OPERATOR        | Operator           | 3      | 7     |
+| 13    | b                  | IDENTIFIER      | Identifier         | 3      | 9     |
+| 14    | \n                 | NEWLINE         | Line Break         | 3      | 10    |
+| 15    | d                  | IDENTIFIER      | Identifier         | 4      | 1     |
+| 16    | =                  | OPERATOR        | Operator           | 4      | 3     |
+| 17    | a                  | IDENTIFIER      | Identifier         | 4      | 5     |
+| 18    | +                  | OPERATOR        | Operator           | 4      | 7     |
+| 19    | b                  | IDENTIFIER      | Identifier         | 4      | 9     |
+| 20    | \n                 | NEWLINE         | Line Break         | 4      | 10    |
+| 21    | e                  | IDENTIFIER      | Identifier         | 5      | 1     |
+| 22    | =                  | OPERATOR        | Operator           | 5      | 3     |
+| 23    | 5                  | NUMBER          | Constant           | 5      | 5     |
+| 24    | +                  | OPERATOR        | Operator           | 5      | 7     |
+| 25    | 3                  | NUMBER          | Constant           | 5      | 9     |
+| 26    | \n                 | NEWLINE         | Line Break         | 5      | 10    |
+| 27    | f                  | IDENTIFIER      | Identifier         | 6      | 1     |
+| 28    | =                  | OPERATOR        | Operator           | 6      | 3     |
+| 29    | c                  | IDENTIFIER      | Identifier         | 6      | 5     |
+| 30    | +                  | OPERATOR        | Operator           | 6      | 7     |
+| 31    | e                  | IDENTIFIER      | Identifier         | 6      | 9     |
+| 32    | \n                 | NEWLINE         | Line Break         | 6      | 10    |
+| 33    | g                  | IDENTIFIER      | Identifier         | 7      | 1     |
+| 34    | =                  | OPERATOR        | Operator           | 7      | 3     |
+| 35    | f                  | IDENTIFIER      | Identifier         | 7      | 5     |
+| 36    | +                  | OPERATOR        | Operator           | 7      | 7     |
+| 37    | d                  | IDENTIFIER      | Identifier         | 7      | 9     |
+| 38    | \n                 | NEWLINE         | Line Break         | 7      | 10    |
+| 39    | unused             | IDENTIFIER      | Identifier         | 8      | 1     |
+| 40    | =                  | OPERATOR        | Operator           | 8      | 8     |
+| 41    | 100                | NUMBER          | Constant           | 8      | 10    |
+| 42    | \n                 | NEWLINE         | Line Break         | 8      | 13    |
+| 43    | if                 | KEYWORD         | Keyword            | 10     | 1     |
+| 44    | g                  | IDENTIFIER      | Identifier         | 10     | 4     |
+| 45    | >                  | OPERATOR        | Operator           | 10     | 6     |
+| 46    | 20                 | NUMBER          | Constant           | 10     | 8     |
+| 47    | :                  | OPERATOR        | Operator           | 10     | 10    |
+| 48    | \n                 | NEWLINE         | Line Break         | 10     | 11    |
+| 49    | INDENT             | INDENT          | Indentation        | 11     | 1     |
+| 50    | h                  | IDENTIFIER      | Identifier         | 11     | 5     |
+| 51    | =                  | OPERATOR        | Operator           | 11     | 7     |
+| 52    | g                  | IDENTIFIER      | Identifier         | 11     | 9     |
+| 53    | +                  | OPERATOR        | Operator           | 11     | 11    |
+| 54    | 1                  | NUMBER          | Constant           | 11     | 13    |
+| 55    | \n                 | NEWLINE         | Line Break         | 11     | 14    |
+| 56    | print              | BUILTIN         | Built-in Function  | 12     | 5     |
+| 57    | (                  | OPERATOR        | Operator           | 12     | 10    |
+| 58    | h                  | IDENTIFIER      | Identifier         | 12     | 11    |
+| 59    | )                  | OPERATOR        | Operator           | 12     | 12    |
+| 60    | \n                 | NEWLINE         | Line Break         | 12     | 13    |
+| 61    | DEDENT             | DEDENT          | Indentation        | 13     | 1     |
++-------+--------------------+-----------------+--------------------+--------+-------+
+
+Token Summary
++-----------------+------------------------------------------------------------+
+| Category        | Values                                                     |
++-----------------+------------------------------------------------------------+
+| Keywords        | if                                                         |
+| Identifiers     | a, b, c, d, e, f, g, h, unused                             |
+| Operators       | (, ), +, :, =, >                                           |
+| Constants       | 1, 10, 100, 20, 3, 5                                       |
++-----------------+------------------------------------------------------------+
+
+==============================================================================
+                              2. SYNTAX ANALYSIS                              
+==============================================================================
+Parse Status: SUCCESS
+Parser Message: Source code has valid Python syntax.
+
+Parse Tree / Syntax Tree
+------------------------
+Program

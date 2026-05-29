@@ -1,0 +1,40 @@
+program :
+    0: 	 ['var1', [1, 2, 3, 4], 'ARRAY', '=']
+    1: 	 ['var3', 0, '', '=']
+    2: 	 ['var4', [1, 2, 3, 4], 'ARRAY', '=']
+    3: 	 ['var5', 4, '', '=']
+    4: 	 ['var6', 'var3', 'var5', '==']
+    5: 	 ['var6', 1, 16, 'COND_GOTO']
+    6: 	 ['var7', 'var3', 4, '*']
+    7: 	 ['var8', 100, 'var7', '+']
+    8: 	 ['var2', 'var8', '', 'LW']
+    9: 	 ['var9', 'var2', 2, '==']
+   10: 	 ['var9', 0, 13, 'COND_GOTO']
+   11: 	 ['', '', 12, 'GOTO']
+   12: 	 ['', '', 14, 'GOTO']
+   13: 	 ['var2', 3, '', '=']
+   14: 	 ['var3', 'var3', 1, '+']
+   15: 	 ['', '', 4, 'GOTO']
+   16: 	 ['', '', -1, 'HALT']
+
+
+ SYMBOL TABLE
+--------------
+
+SCOPE: program
+-----------------------
+{'False': {'offset': 1, 'program': 0, 'type': 'BOOLEAN', 'width': 1},
+ 'True': {'offset': 0, 'program': 1, 'type': 'BOOLEAN', 'width': 1},
+ 'i': {'offset': 6, 'program': 'var2', 'type': 'NUMBER', 'width': 4},
+ 'numParam': 0,
+ 'returnType': 'UNDEFINED',
+ 'scopeName': 'program',
+ 'type': 'FUNCTION',
+ 'var1': {'isArray': 'True',
+          'offset': 2,
+          'place': [1, 2, 3, 4],
+          'type': 'NUMBER',
+          'width': 4},
+ 'width': 10}
+-----------------------
+
